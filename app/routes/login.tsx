@@ -10,15 +10,16 @@ export const action: ActionFunction = async ({ request }) => {
   const username = formData.get("username");
   const password = formData.get("password");
 
+  // basic authentication check
   if (username === "admin" && password === "password") {
-    return redirect("/index");
+    return redirect("/index"); // Redirects to the index page upon successful login
   }
 
-  return { error: "Invalid credentials" };
+  return { error: "Invalid credentials" }; // Returns an error if credentials are incorrect
 };
 
 export default function Login() {
-  const actionData = useActionData<ActionData>();
+  const actionData = useActionData<ActionData>(); // Retrieves action data from the server
 
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col justify-center">
